@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:background="@color/gray">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="10px"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold|italic"
+        android:text="@string/main_activity_label_txt"
+        android:gravity="center"
+        android:textColor="@color/orange"
+        android:background="@drawable/custom_gray_rectangle"
+        android:id="@+id/main_activity_label"
+        android:layout_toLeftOf="@+id/main_activity_add_item_btn"
+        android:layout_above="@android:id/list"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_item_btn_txt"
+        android:background="@drawable/custom_blue_rectangle"
+        android:textColor="@color/white"
+        android:id="@+id/main_activity_add_item_btn"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20px"
+        android:id="@android:id/list"
+        android:layout_toStartOf="@+id/main_activity_add_item_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/main_activity_add_item_btn"
+        android:background="@drawable/rounded_white_rectangle">
+    </ListView>
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">I m On It</string>
+    <string name="action_settings">Settings</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <!-- Labels texts -->
+    <string name="main_activity_label_txt">I am on it ! list</string>
+    <string name="create_task_dialog_label_txt">Create new task</string>
+    <string name="duplicated_task_dialog_label_txt">This item already exists !</string>
+    <!-- Hints texts -->
+    <string name="create_task_dialog_hint_txt">Enter task description</string>
+    <!-- Buttons texts -->
+    <string name="add_item_btn_txt">Add item</string>
+    <string name="done_btn_txt">Done !</string>
+    <string name="give_up_btn_txt">Give up...</string>
+    <string name="delete_item_btn_txt">Delete Item</string>
+    <string name="i_am_on_it_btn_txt">I am on it !</string>
+    <string name="i_can_not_btn_txt">I can not...</string>
+    <string name="ok_btn_txt">ok</string>
+    <string name="create_btn_txt">create</string>
+    <string name="favorites_activity_label_txt">Favorites list</string>
+
+</resources>
