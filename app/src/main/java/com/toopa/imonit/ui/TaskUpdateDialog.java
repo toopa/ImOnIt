@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.toopa.imonit.R;
 import com.toopa.imonit.model.Task;
 import com.toopa.imonit.model.TaskStatus;
+import com.toopa.imonit.services.TasksManager;
 
 /**
  * Created by Toopa on 24/02/2015.
@@ -33,20 +34,23 @@ public class TaskUpdateDialog extends Dialog {
 
     private Task toDoItem;
 
+    private final TasksManager tasksManager;
+
     public TaskUpdateDialog(final MainPageActivity parentActivity, final int itemIndexInToDoList, final Task toDoItem) {
         super(parentActivity);
         this.parentActivity = parentActivity;
         this.toDoItemIndexInList = itemIndexInToDoList;
         this.toDoItem = toDoItem;
+        this.tasksManager = parentActivity.getTasksManager();
     }
 
     @Override
-    public void onCreate(final Bundle savedInstanceState){
+    public void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         // Creates a specific dialog, depending on the task status
-        switch(toDoItem.getStatus()){
+        switch (toDoItem.getStatus()) {
             case POSTED:
                 createPostedTaskDialog();
                 break;
@@ -113,9 +117,10 @@ public class TaskUpdateDialog extends Dialog {
     }
 
     private void defineOnClickForDoneItemButton(final Button doneItemButton) {
-        doneItemButton.setOnClickListener(new View.OnClickListener(){
+        doneItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tasksManager.updateTaskStatus(toDoItem, TaskStatus.COMPLETED);
                 parentActivity.changeToDoItemStatus(toDoItemIndexInList, TaskStatus.COMPLETED);
                 dismiss();
             }
@@ -123,10 +128,11 @@ public class TaskUpdateDialog extends Dialog {
     }
 
     private void defineOnClickForIAmOnItButton(final Button iAmOnItButton) {
-        iAmOnItButton.setOnClickListener(new View.OnClickListener(){
+        iAmOnItButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                parentActivity.changeToDoItemStatus(toDoItemIndexInList,TaskStatus.ASSIGNED);
+                tasksManager.updateTaskStatus(toDoItem, TaskStatus.ASSIGNED);
+                parentActivity.changeToDoItemStatus(toDoItemIndexInList, TaskStatus.ASSIGNED);
                 dismiss();
             }
         });
@@ -136,6 +142,7 @@ public class TaskUpdateDialog extends Dialog {
         iCanNotButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tasksManager.updateTaskStatus(toDoItem, TaskStatus.POSTED);
                 parentActivity.changeToDoItemStatus(toDoItemIndexInList, TaskStatus.POSTED);
                 dismiss();
             }
@@ -143,9 +150,10 @@ public class TaskUpdateDialog extends Dialog {
     }
 
     private void defineOnClickForDeleteItemButton(final Button deleteButton) {
-        deleteButton.setOnClickListener(new View.OnClickListener(){
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tasksManager.deleteTask(toDoItem);
                 parentActivity.deleteToDoItem(toDoItemIndexInList);
                 dismiss();
             }

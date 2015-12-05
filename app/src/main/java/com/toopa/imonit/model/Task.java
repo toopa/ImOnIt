@@ -13,15 +13,19 @@ public class Task {
 
     private TaskStatus status;
 
-    public Task( final String description ){
-        this(UUID.randomUUID(),description);
+    public Task(final String description) {
+        this(UUID.randomUUID(), description);
     }
 
-    public Task( final UUID id, final String description ){
-        super();
+    public Task(final UUID id, final String description) {
+        this(id, description, TaskStatus.POSTED);
+
+    }
+
+    public Task(final UUID id, final String description, final TaskStatus status) {
         this.id = id;
         this.description = description;
-        this.status = TaskStatus.POSTED;
+        this.status = status;
     }
 
     public UUID getId() {
@@ -49,7 +53,7 @@ public class Task {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.description + "\t[" + this.status.toString() + "]";
     }
 }
